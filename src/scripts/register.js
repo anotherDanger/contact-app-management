@@ -26,6 +26,10 @@ export const register = () => {
                     console.log('Token tidak ditemukan dalam respons');
                 }
             } else {
+                if(response.status === 400)
+                {
+                   document.getElementById('message').innerText = 'already taken';
+                }
                 console.log('Pendaftaran gagal');
             }
         } catch (err) {
