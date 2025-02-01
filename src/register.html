@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="../dist/sytle.css">
+</head>
+<body class="bg-[#493D9E]">
+  <div class="h-screen flex items-center justify-center">
+
+    <div class="w-full max-w-md bg-[#B2A5FF] p-8 rounded-lg shadow-lg">
+
+      <form class="space-y-6">
+        <div class="text-[#493D9E] text-4xl font-semibold">
+          <p>Register</p>
+        </div>
+
+        <div>
+          <label for="username" class="block text-sm font-medium text-[#493D9E]">Username</label>
+          <input type="text" id="username" name="username" class="mt-1 block w-full px-4 py-2 rounded-md bg-[#DAD2FF] shadow-sm sm:text-sm" placeholder="Username">
+        </div>
+
+        <div>
+          <label for="password" class="block text-sm font-medium text-[#493D9E]">Password</label>
+          <input type="password" id="password" name="password" class="mt-1 block w-full px-4 py-2 rounded-md bg-[#DAD2FF] sm:text-sm" placeholder="Password">
+        </div>
+
+
+        <div>
+          <button type="button" class="w-full bg-[#493D9E] text-white py-2 px-4 rounded-md hover:bg-[#373166] focus:outline-none focus:ring-2 focus:ring-blue-300">Register</button>
+        </div>
+      </form>
+
+    </div>
+
+  </div>
+</body>
+</html>
