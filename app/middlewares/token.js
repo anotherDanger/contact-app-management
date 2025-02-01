@@ -16,9 +16,12 @@ export const generateJWT = (req, res, next) => {
 
     jwt.sign(payload, process.env.JWT_SECRET_KEY, { expiresIn: '1h' }, (err, token) => {
         if (err) {
-            return res.status(500).json({ message: 'Error generating token'});
+            return res.status(500).json({ message: 'Error generating token' });
         }
-        res.json({ message: 'Success'});
-    });
 
+        res.json({
+            message: 'Success',
+            token: token
+        });
+    });
 };
