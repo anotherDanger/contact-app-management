@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 export const generateJWT = (req, res, next) => {
-    const { username } = req.body;
+    const { username, password } = req.body;
 
     if (!username) {
         return res.status(400).json({ message: 'Username is required' });
@@ -19,9 +19,8 @@ export const generateJWT = (req, res, next) => {
             return res.status(500).json({ message: 'Error generating token' });
         }
 
-        res.json({
-            message: 'Success',
-            token: token
-        });
+        req.token = token;
+        req.password = password;
+        next();
     });
 };
