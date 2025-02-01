@@ -1,8 +1,7 @@
-import { Router } from "express";
-import { verifyToken } from "../middlewares/verify.js";
+import { Router } from 'express';
 
 export const router = Router();
 
-router.get('/user', verifyToken, (req, res) => {
+router.post('/user', (req, res) => {
     res.send('Hello World');
 });

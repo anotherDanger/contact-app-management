@@ -6,7 +6,26 @@ export const register = () => {
         username: username,
         password: password
     };
-    document.getElementById('btnRegister').addEventListener('click', () => {
-        console.log(JSON.stringify(data));
+    document.getElementById('btnRegister').addEventListener('click', async () => {
+        const request = new Request('http://localhost:3000/user',{
+            method: 'POST',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        try{
+            const response = await fetch(request);
+
+            if(response.ok)
+            {
+                console.log('ok')
+            };
+        }catch(err)
+        {
+            console.log('error')
+        }
+
     })
 }

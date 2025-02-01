@@ -1,9 +1,15 @@
 import express from 'express';
-import {router} from '../routes/routes.js';
-import { verifyToken } from '../middlewares/verify.js';
+import { router } from '../routes/routes.js';
+import { generateJWT } from "../middlewares/token.js";
+import cors from 'cors';
+
 const app = express();
 
-app.use(verifyToken);
+app.use(cors());
+app.use(express.json());
+
+// Gunakan generateJWT hanya untuk route tertentu, misalnya route /user
+app.use('/user', generateJWT);  // Ini hanya akan diterapkan untuk route /user
 
 app.use(router);
 
