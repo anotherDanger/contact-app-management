@@ -1,12 +1,10 @@
 export const register = () => {
     document.getElementById('btnRegister').addEventListener('click', async () => {
-    const username = document.getElementById('usernameField').value;
-    const password = document.getElementById('passwordField').value;
+        const username = document.getElementById('usernameField').value;
+        const password = document.getElementById('passwordField').value;
 
-    const data = { username, password };
+        const data = { username, password };
 
-    
-        console.log(password);
         const request = new Request('http://localhost:3000/user', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -17,18 +15,26 @@ export const register = () => {
             const response = await fetch(request);
 
             if (response.ok) {
-                const result = await response.json();
+                const result = await response.json(); // Ambil JSON dari respons
                 const token = result.token;
+
                 if (token) {
+                    console.log('Token dari server:', token);
+                    
+                    // Simpan token baru di localStorage
                     localStorage.setItem('auth', token);
-                    redirectToProtectedPage();
+                    console.log('Token setelah disimpan di localStorage:', localStorage.getItem('auth'));  // Debugging token yang disimpan
+                    
+                    // Menunda redirect untuk memastikan token disimpan terlebih dahulu
+                    setTimeout(() => {
+                        redirectToProtectedPage();  // Arahkan ke halaman yang terproteksi
+                    }, 100);  // Menunggu 100ms untuk memastikan token disimpan
                 } else {
                     console.log('Token tidak ditemukan dalam respons');
                 }
             } else {
-                if(response.status === 400)
-                {
-                   document.getElementById('message').innerText = 'Username already taken!';
+                if (response.status === 400) {
+                    document.getElementById('message').innerText = 'Username sudah terdaftar!';
                 }
                 console.log('Pendaftaran gagal');
             }
@@ -39,20 +45,23 @@ export const register = () => {
 };
 
 const redirectToProtectedPage = async () => {
-    try {
-        const token = localStorage.getItem('auth');
-        if (!token) {
-            console.log('Token tidak ditemukan, tidak bisa mengakses halaman terproteksi');
-            return;
-        }
+    const token = localStorage.getItem('auth'); // Ambil token terbaru dari localStorage
+    console.log('Token di localStorage sebelum akses halaman terproteksi:', token);  // Debugging token sebelum akses halaman
 
+    if (!token) {
+        console.log('Token tidak ditemukan, tidak bisa mengakses halaman terproteksi');
+        return;
+    }
+
+    try {
         const response = await fetch('http://localhost:3000/protected', {
             method: 'GET',
             headers: { 'Authorization': `Bearer ${token}` }
         });
 
         if (response.ok) {
-            window.location.href = response.url;
+            console.log('Akses berhasil ke halaman terproteksi');
+            window.location.href = 'home.html'; // Arahkan ke halaman yang terproteksi
         } else {
             console.log('Tidak dapat mengakses data terproteksi');
         }

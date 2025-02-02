@@ -7,12 +7,10 @@ export const createUser = async (req, res) => {
     const token = req.token;
 
     try {
-        // Memastikan username dan password ada di request body
         if (!username || !password) {
             return res.status(400).json({ error: 'Username and password are required' });
         }
 
-        // Membuat user baru menggunakan Prisma
         const newUser = await prisma.user.create({
             data: {
                 username,
@@ -20,7 +18,6 @@ export const createUser = async (req, res) => {
             },
         });
 
-        // Mengembalikan respons sukses dengan token
         res.status(201).json({
             message: 'Success',
             user: newUser,
