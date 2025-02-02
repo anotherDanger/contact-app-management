@@ -8,5 +8,5 @@ router.post('/user', (req, res) => {
 
 router.get('/protected', (req, res) => {
     console.log('Masuk ke /protected')
-    res.redirect('http://localhost:5500/src/sample.html');
+    res.redirect('http://localhost:5500/src/home.html');
 })
