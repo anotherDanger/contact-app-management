@@ -28,7 +28,7 @@ export const register = () => {
             } else {
                 if(response.status === 400)
                 {
-                   document.getElementById('message').innerText = 'already taken';
+                   document.getElementById('message').innerText = 'Username already taken!';
                 }
                 console.log('Pendaftaran gagal');
             }
