@@ -57,7 +57,7 @@ const redirectToProtectedPage = async () => {
 
         if (response.ok) {
             console.log('Akses berhasil ke halaman terproteksi');
-            window.location.href = 'home.html';  // Redirect ke halaman terproteksi
+            window.location.href = 'home.html';
         } else {
             console.log('Tidak dapat mengakses data terproteksi');
         }
