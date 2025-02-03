@@ -15,20 +15,17 @@ export const register = () => {
             const response = await fetch(request);
 
             if (response.ok) {
-                const result = await response.json(); // Ambil JSON dari respons
+                const result = await response.json();
                 const token = result.token;
 
                 if (token) {
                     console.log('Token dari server:', token);
-                    
-                    // Simpan token baru di localStorage
                     localStorage.setItem('auth', token);
-                    console.log('Token setelah disimpan di localStorage:', localStorage.getItem('auth'));  // Debugging token yang disimpan
+                    console.log('Token setelah disimpan di localStorage:', localStorage.getItem('auth'));
                     
-                    // Menunda redirect untuk memastikan token disimpan terlebih dahulu
                     setTimeout(() => {
-                        redirectToProtectedPage();  // Arahkan ke halaman yang terproteksi
-                    }, 100);  // Menunggu 100ms untuk memastikan token disimpan
+                        redirectToProtectedPage();
+                    }, 100);
                 } else {
                     console.log('Token tidak ditemukan dalam respons');
                 }
@@ -45,8 +42,8 @@ export const register = () => {
 };
 
 const redirectToProtectedPage = async () => {
-    const token = localStorage.getItem('auth'); // Ambil token terbaru dari localStorage
-    console.log('Token di localStorage sebelum akses halaman terproteksi:', token);  // Debugging token sebelum akses halaman
+    const token = localStorage.getItem('auth');
+    console.log('Token di localStorage sebelum akses halaman terproteksi:', token);
 
     if (!token) {
         console.log('Token tidak ditemukan, tidak bisa mengakses halaman terproteksi');

@@ -1,9 +1,8 @@
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 
-dotenv.config(); // Memuat file .env
+dotenv.config();
 
-// Middleware untuk membuat JWT
 export const generateJWT = (req, res, next) => {
     const { username, password } = req.body;
 
@@ -20,8 +19,8 @@ export const generateJWT = (req, res, next) => {
             return res.status(500).json({ message: 'Error generating token' });
         }
 
-        console.log('Token yang dihasilkan:', token);  // Log token yang dibuat
+        console.log('Token yang dihasilkan:', token);
 
-        return res.json({ token });  // Mengirimkan token dalam respons JSON
+        return res.json({ token });
     });
 };
