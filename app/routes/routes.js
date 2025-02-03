@@ -19,6 +19,10 @@ router.post('/contact', (req, res) => {
     })
 })
 
+router.get('/contac', (req, res) => {
+    
+})
+
 router.get('/login', (req, res) => {
 
 });
