@@ -16,7 +16,7 @@ datasource db {
 model User {
   id Int @id @default(autoincrement())
   username String @unique @db.VarChar(100)
-  password String @db.VarChar(20)
+  password String
   createdAt DateTime @default(now())
   contact Contact[] @relation("UserContact")
   @@map("users")

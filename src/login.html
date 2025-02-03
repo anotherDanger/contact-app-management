@@ -14,7 +14,7 @@
 
       <form class="space-y-6">
         <div class="text-[#493D9E] text-4xl font-semibold">
-          <p>Register</p>
+          <p>Login</p>
         </div>
         
         <div id="message"></div>
@@ -29,7 +29,7 @@
           <input id="passwordField" type="password" name="password" class="mt-1 block w-full px-4 py-2 rounded-md bg-[#DAD2FF] sm:text-sm" placeholder="Password">
         </div>
 
-        <div><a href="login.html">Login</a></div>
+        <div><a href="http://localhost:3000/login">Login</a></div>
 
         <div>
           <button id="btnRegister" type="button" class="w-full bg-[#493D9E] text-white py-2 px-4 rounded-md hover:bg-[#373166] focus:outline-none focus:ring-2 focus:ring-blue-300">Register</button>
@@ -38,8 +38,8 @@
     </div>
   </div>
   <script type="module">
-        import {register} from './scripts/register.js';
-        register();
+        import {login} from './scripts/login.js';
+        login();
   </script>
 </body>
 </html>

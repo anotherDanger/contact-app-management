@@ -1,11 +1,11 @@
-export const register = () => {
+export const login = () => {
     document.getElementById('btnRegister').addEventListener('click', async () => {
         const username = document.getElementById('usernameField').value;
         const password = document.getElementById('passwordField').value;
 
         const data = { username, password };
 
-        const request = new Request('http://localhost:3000/user', {
+        const request = new Request('http://localhost:3000/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),

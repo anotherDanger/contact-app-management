@@ -18,3 +18,7 @@ router.post('/contact', (req, res) => {
         message: 'Success'
     })
 })
+
+router.get('/login', (req, res) => {
+
+});
